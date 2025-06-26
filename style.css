@@ -13,6 +13,12 @@ body {
   color: white;
   overflow-x: hidden;
 }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 header {
   position: fixed;
   top: 0;
@@ -22,7 +28,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 0px;
 }
 
 .slide-nav {
@@ -30,18 +36,19 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 0.5rem 1rem;
+  margin: 1rem auto;
 }
 
 .slide-nav .nav-link {
   color: white;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 300;
   transition: color 0.3s ease;
   padding: 0.3rem 0.6rem;
   border-radius: 4px;
   font-family: "Inter", sans-serif;
+  text-transform: uppercase;
 }
 
 .slide-nav .nav-link:hover,
@@ -51,9 +58,9 @@ header {
 }
 
 .logo-container {
-  width: 80px;
+  width: 70px;
   height: auto;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .logo-container img {
@@ -86,19 +93,88 @@ header {
   max-width: 1200px;
 }
 
+.icon-container img{
+  width: 50px;
+  height: 50px;
+}
 
-.slide{
-  height: 100vh;
+.slide {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
   padding-left: 2rem;
   padding-right: 2rem;
   text-align: center;
   scroll-margin-top: 120px; 
 }
-.slide p{
+.slide:first-child {
+  margin-top: 140px;
+}
+
+.slide .diagrama {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.slide .diagrama .row {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.slide .diagrama .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: anchor-center;
+    gap: 5px;
+}
+
+.slide .diagrama .diagrama-footer {
+  font-size: 24px;
+}
+
+.slide .diagrama .diagrama-icon {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide .diagrama .diagrama-icon svg {
+  width: 60px;
+  height: 60px;
+}
+.slide .diagrama .diagrama-icon.two-arrows {
+  height: 30px;
+}
+.slide .diagrama .diagrama-icon.two-arrows svg {
+  width: 30px;
+  height: 30px;
+}
+.slide .diagrama .frontend,
+.slide .diagrama .server {
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+.slide .components {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slide div,
+.slide p,
+.slide span{
+  font-size: 16px;
+  font-weight: 300;
   font-family: "Inter", sans-serif;
 }
 .slide pre {
@@ -109,10 +185,14 @@ header {
 h2 {
   font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 22px;
 }
 
 .sandbox {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -134,13 +214,14 @@ h2 {
 
 .sandbox button {
   align-self: flex-start;
-  background-color: #0f172a;
+  background-color: #5f6a84;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: auto;
 }
 
 .sandbox button:hover {
@@ -206,4 +287,43 @@ footer {
 
 .hidden {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .sandbox {
+    flex-direction: row;
+  }
+  h2 {
+      font-size: 42px;
+  }
+  .slide {
+    height: 100vh;
+  }
+  .slide .diagrama .row {
+    flex-direction: row;
+    gap: 60px;
+  }
+  .slide .diagrama .diagrama-icon svg {
+    width: 140px;
+    height: 140px;
+  }
+  header {
+    padding-top: 40px;
+  }
+
+  .logo-container {
+      width: 140px;
+      height: auto;
+      margin: 20px 0 40px;
+  }
+  .slide .diagrama .diagrama-icon {
+    height: 140px;
+  }
+  .slide .diagrama .diagrama-icon.server-icon,
+  .slide .diagrama .diagrama-icon.server-icon svg{
+    height: 100px;
+  }
+  .slide .diagrama .column {
+    gap: 20px;
+  }
 }
