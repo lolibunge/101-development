@@ -1,7 +1,7 @@
-
 const progressBar = document.getElementById('progress-bar');
 const slides = document.querySelectorAll('.slide');
 
+// Scroll progress bar logic
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const totalHeight = document.body.scrollHeight - window.innerHeight;
@@ -12,7 +12,12 @@ window.addEventListener('scroll', () => {
 const sections = document.querySelectorAll('.slide');
 const navLinks = document.querySelectorAll('.slide-nav .nav-link');
 
+let ignoreObserver = false; // prevent conflict with manual clicks
+
+// IntersectionObserver for highlighting nav links based on scroll
 const observer = new IntersectionObserver((entries) => {
+  if (ignoreObserver) return;
+
   entries.forEach(entry => {
     const id = entry.target.getAttribute('id');
     const navLink = document.querySelector(`.slide-nav a[href="#${id}"]`);
@@ -29,23 +34,52 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 sections.forEach(section => observer.observe(section));
-// HTML (slide 6)
+
+// Manual scroll + active class on click
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+
+    const headerOffset = document.querySelector('header').offsetHeight;
+    const elementPosition = target.getBoundingClientRect().top + window.scrollY - 40;
+    const offsetPosition = elementPosition - headerOffset;
+
+    ignoreObserver = true;
+
+    // Scroll to target
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    // Manually set active class
+    navLinks.forEach(link => link.classList.remove('active'));
+    this.classList.add('active');
+
+    // Re-enable observer after delay
+    setTimeout(() => {
+      ignoreObserver = false;
+    }, 800);
+  });
+});
+
+// Slide 6 — run HTML
 document.getElementById('runCode')?.addEventListener('click', function () {
   const input = document.getElementById('htmlInput').value;
   const iframe = document.getElementById('preview');
   iframe.srcdoc = input;
 });
 
-// CSS (slide 7)
+// Slide 7 — run HTML+CSS
 document.getElementById('runCssCode')?.addEventListener('click', function () {
   const input = document.getElementById('cssInput').value;
   const iframe = document.getElementById('cssPreview');
   iframe.srcdoc = input;
 });
 
-
-// CSS (slide 8)
-// Show modal globally
+// Slide 8 — modal greeting
 function showGreeting(name) {
   const greetingMessage = document.getElementById('greetingMessage');
   const modal = document.getElementById('modal');
@@ -54,18 +88,16 @@ function showGreeting(name) {
   modal.classList.remove('hidden');
 }
 
-// Hide modal globally
 function hideModal() {
   document.getElementById('modal').classList.add('hidden');
 }
 
-// Modal close listeners
 document.getElementById('closeModal')?.addEventListener('click', hideModal);
 document.getElementById('modal')?.addEventListener('click', (e) => {
   if (e.target.id === 'modal') hideModal();
 });
 
-// Handle JS injection
+// Slide 8 — run JS
 document.getElementById('runJsCode')?.addEventListener('click', () => {
   const code = document.getElementById('jsInput').value;
 
@@ -113,22 +145,4 @@ document.getElementById('runJsCode')?.addEventListener('click', () => {
       </body>
     </html>
   `;
-});
-
-
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const target = document.getElementById(targetId);
-
-    const headerOffset = document.querySelector('header').offsetHeight;
-    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
-  });
 });
