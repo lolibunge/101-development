@@ -1,0 +1,105 @@
+<section>
+  <div>
+    <h2>✅ Ejercicio para principiantes: preparate para escribir tu primer código!</h2>
+  </div>
+
+  <div>
+    <h3>🧰 Requisitos: Qué necesitas en tu computadora</h3>
+    <ul>
+      <li><strong>Visual Studio Code (VS Code):</strong> Un editor donde escribirás HTML, CSS y JS.<br>
+      <a href="https://code.visualstudio.com/" target="_blank">Descargar VS Code</a></li>
+
+      <li><strong>Navegador Web:</strong> Chrome, Firefox o Edge para ver tu proyecto.<br>
+      Recomendamos <strong>Google Chrome</strong> por sus herramientas de desarrollo.</li>
+
+      <li><strong>Git & GitHub:</strong> Git para controlar versiones. GitHub para guardarlas online.<br>
+      <a href="https://git-scm.com/" target="_blank">Instalar Git</a> · <a href="https://github.com/join" target="_blank">Crear cuenta GitHub</a></li>
+
+      <li><strong>Git & GitHub:</strong> Git te ayuda a controlar los cambios. GitHub te permite guardar tu código online.<br>
+        Podés elegir entre:
+        <ul>
+            <li>👉 <strong>Git + Terminal:</strong> Recomendado si querés aprender cómo funciona internamente. <a href="https://git-scm.com/" target="_blank">Descargar Git</a></li>
+            <li>🖥️ <strong>GitHub Desktop:</strong> Más fácil para empezar. <a href="https://desktop.github.com/" target="_blank">Descargar GitHub Desktop</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3>🧪 ¡Practiquemos! Tu primer proyecto</h3>
+    <p>En tu carpeta de documentos crea una carpeta que diga development-learning y ahí crea una carpeta llamada <code>my-first-website</code> y adentro:</p>
+    <ol>
+      <li>Crea estos 3 archivos: <span data-tooltip="esto esta en la parte superior izquierda al lado del nombre de tu carpeta que create 'my-first-website' ">ⓘ</span>
+        <ul>
+          <li><code>index.html</code></li>
+          <li><code>style.css</code></li>
+          <li><code>script.js</code></li>
+        </ul>
+      </li>
+      <li>Agregá este código:</li>
+    </ol>
+  </div>
+
+  <div>
+    <h4><code>index.html</code></h4>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Website&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Welcome to My Restaurant&lt;/h1&gt;
+  &lt;button id="greetBtn"&gt;Click Me&lt;/button&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  <div>
+    <h4><code>style.css</code></h4>
+    <pre><code>body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}</code></pre>
+  </div>
+
+  <div>
+    <h4><code>script.js</code></h4>
+    <pre><code>document.getElementById("greetBtn").addEventListener("click", function () {
+  alert("Welcome to the coding kitchen!");
+});</code></pre>
+  </div>
+
+  <div>
+    <h3>🚀 Cómo Ejecutarlo</h3>
+    <ul>
+      <li>Abrí la carpeta en VS Code</li>
+      <li>Click derecho en <code>index.html</code> → “Open with Live Server”</li>
+      <li>O simplemente abrilo en tu navegador</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3>🧠 Primer Commit con Git</h3>
+    <pre><code>git init
+git add .
+git commit -m "My first website"</code></pre>
+    <h4>🔁 Luego subilo a GitHub:</h4>
+    <pre><code>git remote add origin https://github.com/your-username/my-first-website.git
+git branch -M main
+git push -u origin main</code></pre>
+  </div>
+</section>
